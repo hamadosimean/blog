@@ -1,0 +1,32 @@
+{% load static %}
+<html>
+  <head>
+    <title>Fatiham Blog</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400"
+      rel="styleshee\
+t"
+    />
+    <link rel="stylesheet" href="{% static 'css/base.css '%}" />
+  </head>
+  <body>
+    <header>
+      <div class="nav-left">
+        <h1><a href="{% url 'home' %}"> Fatiham Blog App</a></h1>
+      </div>
+      <div class="nav-right">
+        <a href="{% url 'post_new' %}">+ New add blog</a>
+      </div>
+    </header>
+
+    <div>
+      {% if user.is_authenticated %}
+      <p>Hi {{ user.username }}!</p>
+
+      <p><a href="{% url 'logout' %}">Log out</a></p>
+      {% else %}
+      <p><a href="{% url 'login' %}">Log In</a></p>
+      {% endif %}{% block content %} {% endblock content %}
+    </div>
+  </body>
+</html>
